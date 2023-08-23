@@ -1,14 +1,16 @@
 from django.urls import path
-from rest_framework.authtoken import views
-from store.views import *
-
+from store.views import (
+    AddBoxView,
+    ListAllBoxView,
+    MyListBoxView,
+    UpdateBoxView,
+    DeleteBoxView
+)
 
 urlpatterns = [
-
-    path('box/add/',add_box,name='add-box'),
-    path('box/list_all_box/',list_all_box,name='list-all-box'),
-    path('box/my_list/',my_list_box,name='list-my-box'),
-    path('box/update/<str:pk>',update_box,name='update-box'),
-    path('box/delete/<str:pk>',delete_box,name='delete-box')
-
+    path('box/add/', AddBoxView.as_view(), name='add-box'),
+    path('box/list_all_box/', ListAllBoxView.as_view(), name='list-all-box'),
+    path('box/my_list/', MyListBoxView.as_view(), name='list-my-box'),
+    path('box/update/<str:pk>/', UpdateBoxView.as_view(), name='update-box'),
+    path('box/delete/<str:pk>/', DeleteBoxView.as_view(), name='delete-box')
 ]
